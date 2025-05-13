@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="Project.css">
+</head>
+<body>
+    <div class="container">
+        <div id="register-box">
+            <h2>Register form</h2>
+            <input type="text" id="Bhanu" placeholder="Username" required>            
+            <input type="email" id="Prem" placeholder="Email" required>
+            <input type="text" id="Phone" placeholder="Phone.No:-XXX" required>
+            <input type="date" id="U" required>
+            <input type="password" id="Hai" placeholder="Password" required>
+            <input type="password" id="Hello" placeholder="Confirm Password" required>
+
+            <button onclick="register()">Register</button>
+            <p>Already have an account? <a href="#" onclick="toggleForm('login')">Login</a></p>
+        </div>
+
+        <div id="login-box" style="display:none;">
+            <h2>Login</h2>
+            <input type="email" id="K" placeholder="Email" required>
+            <input type="password" id="P" placeholder="Password" required>
+            <button onclick="login()">Login</button>
+            <p>Don't have an account? <a href="#" onclick=" ('register')">Register</a></p>
+        </div>
+    </div>
+    <script src="project.js"></script>
+</body>
+</html>

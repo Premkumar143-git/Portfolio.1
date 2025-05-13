@@ -1,0 +1,13 @@
+div{
+    display: flex;
+    flex-direction: column;
+    color: blue;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    
+}
+#prem{
+    color: rgb(14, 13, 12);
+    margin-left: 100px;
+}

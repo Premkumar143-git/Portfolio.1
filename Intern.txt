@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Stock Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+        #company-list {
+            width: 250px;
+            padding: 20px;
+            border-right: 2px solid #ddd;
+            background-color: #f4f4f4;
+        }
+        #chart-container {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        #company-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #company-list li {
+            cursor: pointer;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        #company-list li:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="company-list">
+        <h3>Companies</h3>
+        <ul id="companies"></ul>
+    </div>
+
+    <div id="chart-container">
+        <canvas id="stock-chart"></canvas>
+    </div>
+
+    <script>
+        const csvUrl = 'https://raw.githubusercontent.com/shaktids/stock_app_test/refs/heads/main/dump.csv';
+        let companyData = [];
+
+        // Fetch and parse the CSV data
+        fetch(csvUrl)
+            .then(response => response.text())
+            .then(data => {
+                // Parse CSV using PapaParse
+                Papa.parse(data, {
+                    header: true,
+                    skipEmptyLines: true,
+                    complete: function(results) {
+                        companyData = results.data;
+                        populateCompanyList();
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching CSV:', error));
+
+        // Populate the company list
+        function populateCompanyList() {
+            const companyNames = [...new Set(companyData.map(item => item.Company))]; // Get unique company names
+            const companyListElement = document.getElementById('companies');
+            companyNames.forEach(company => {
+                const li = document.createElement('li');
+                li.textContent = company;
+                li.addEventListener('click', () => displayChartForCompany(company));
+                companyListElement.appendChild(li);
+            });
+        }
+
+        // Display chart for selected company
+        function displayChartForCompany(company) {
+            const filteredData = companyData.filter(item => item.Company === company);
+            const labels = filteredData.map(item => item.Date);
+            const stockPrices = filteredData.map(item => parseFloat(item.Close));
+
+            const ctx = document.getElementById('stock-chart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: ${company} Stock Price,
+                        data: stockPrices,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            type: 'category',
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Stock Price ($)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

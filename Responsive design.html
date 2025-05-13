@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Wed design</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #f194c3 30%, #7e80f7 80%);
+        }
+        .login-container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-btn:hover {
+            background: #0056b3;
+        }
+        .close-btn {
+            width: 100%;
+            padding: 10px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .close-btn:hover {
+            background: #5a6268;
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 12px;
+            color: #eceaea;
+            text-align: center;
+        }
+        @media (max-width: 400px) {
+            .login-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>LOGIN</h2>
+        <div class="input-group">
+            <label for="username">UserName / E-mail</label>
+            <input type="text" id="username" placeholder="UserName/E-mail">
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter Password">
+        </div>
+        <button class="login-btn" onclick="validateLogin()">Submit</button>
+        <button class="close-btn" onclick="closeWindow()">Forget Password?</button>
+    </div>
+    <div class="footer">
+        <p>UI/UX DEVELOPER</p>
+        <p>&copy; 2025 MetLife, Inc. All rights reserved.</p>
+    </div>
+    <script>
+        function validateLogin() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            if (!username || !password) {
+                alert("Both fields are required!");
+                return;
+            }
+            alert("Login Successful!");
+        }
+        function closeWindow() {
+            alert("Creat New Password...");
+        }
+    </script>
+</body>
+</html>

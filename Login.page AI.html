@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .login-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+        }
+        
+        .login-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            border-color: #4285f4;
+            outline: none;
+        }
+        
+        .form-group .error-message {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .form-group.error input {
+            border-color: #d32f2f;
+        }
+        
+        .form-group.error .error-message {
+            display: block;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .remember-me input {
+            margin-right: 10px;
+        }
+        
+        .btn-login {
+            width: 100%;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-login:hover {
+            background-color: #3367d6;
+        }
+        
+        .forgot-password {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #4285f4;
+            text-decoration: none;
+        }
+        
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        .sign-up {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .sign-up a {
+            color: #4285f4;
+            text-decoration: none;
+        }
+        
+        .sign-up a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="login-title">Login to Your Account</h2>
+        <form id="loginForm">
+            <div class="form-group" id="emailGroup">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email">
+                <span class="error-message">Please enter a valid email</span>
+            </div>
+            <div class="form-group" id="passwordGroup">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+                <span class="error-message">Password must be at least 6 characters</span>
+            </div>
+            <div class="remember-me">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Remember me</label>
+            </div>
+            <button type="submit" class="btn-login">Login</button>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+            <div class="sign-up">
+                Don't have an account? <a href="#">Sign Up</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const emailGroup = document.getElementById('emailGroup');
+            const passwordGroup = document.getElementById('passwordGroup');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            
+            // Function to validate email format
+            function isValidEmail(email) {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailPattern.test(email);
+            }
+            
+            // Function to validate form fields
+            function validateForm() {
+                let isValid = true;
+                
+                // Validate email
+                if (!emailInput.value.trim() || !isValidEmail(emailInput.value)) {
+                    emailGroup.classList.add('error');
+                    isValid = false;
+                } else {
+                    emailGroup.classList.remove('error');
+                }
+                
+                // Validate password
+                if (!passwordInput.value.trim() || passwordInput.value.length < 6) {
+                    passwordGroup.classList.add('error');
+                    isValid = false;
+                } else {
+                    passwordGroup.classList.remove('error');
+                }
+                
+                return isValid;
+            }
+            
+            // Handle form submission
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                if (validateForm()) {
+                    // Here you would typically send the login data to a server
+                    console.log('Login form submitted with:');
+                    console.log('Email:', emailInput.value);
+                    console.log('Password:', passwordInput.value);
+                    console.log('Remember Me:', document.getElementById('rememberMe').checked);
+                    
+                    // For demonstration, show an alert
+                    alert('Login successful! (This is just a demo, no actual login occurred)');
+                    
+                    // You could redirect the user after successful login:
+                    // window.location.href = 'dashboard.html';
+                }
+            });
+            
+            // Live validation as user types
+            emailInput.addEventListener('input', function() {
+                if (emailInput.value.trim() && isValidEmail(emailInput.value)) {
+                    emailGroup.classList.remove('error');
+                }
+            });
+            
+            passwordInput.addEventListener('input', function() {
+                if (passwordInput.value.trim() && passwordInput.value.length >= 6) {
+                    passwordGroup.classList.remove('error');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

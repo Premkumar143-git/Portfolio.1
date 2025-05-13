@@ -1,0 +1,66 @@
+*{
+    font-family: "poppins",sans-serif;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(file:///C:/Users/PC/Pictures/Saved%20Pictures/171916.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.wrapper{
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(red, green, blue, alpha);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(255, green, blue, alpha) ;
+    border: radius 10px;;
+    color: white;
+    padding: 30px 40px;
+}
+.wrapper h1{
+    font-size: 36px;
+    text-align: center;
+}
+.wrapper .input-box{
+    width: 100%;
+    background-color: transparent;
+    margin: 30px 0; 
+    
+}
+.input-box input{
+    width: 100%;
+    background: transparent;
+    border: 2px solid rgba(255, green, blue, alpha);
+    border-radius: 30px;
+}
+.input-box input::placeholder{
+    color: white;
+}
+.wrapper .rememberForget {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: 15px 0 15px;
+}
+.rememberForget label input{
+    accent-color: white;
+    margin-right: 3px;
+}
+.rememberForget a{
+    color: white;
+    text-decoration: none;
+}
+.rememberForget a:hover{
+    text-decoration: underline;
+}
+button {
+    width: 100%;
+    height: 30px;
+
+}
+
+

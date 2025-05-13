@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for=""> Enter List Item</label>
+    <input type ="text" id="text" </input>
+    <button onclick ="add_li_item()">Add</button>
+    <ul id="ull"></ul>
+
+    <script type="text/javascript">
+    function add_li_item(){
+     var get_text = document.getElementById('txt').value;
+         var ull=document.getElementById('ull');
+         get_data_txt_node = document.createTextNode(get_text);
+                lii = document.createElement("LI");
+       lii.appendchild(get_data_txt_node);
+               ull.appendChild(lii);
+    document.getElementById('txt').value = ""; 
+      }
+</script>
+</body>
+</html>
