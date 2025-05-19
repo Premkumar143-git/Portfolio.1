@@ -1,0 +1,24 @@
+{
+  "name": "web-design",
+  "version": "1.0.0",
+  "main": "Brainwave.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Premkumar143-git/Portfolio.1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Premkumar143-git/Portfolio.1/issues"
+  },
+  "homepage": "https://github.com/Premkumar143-git/Portfolio.1#readme",
+  "description": ""
+}
+
+
+

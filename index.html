@@ -4,33 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moddu Prem Kumar | Portfolio</title>
-  <!-- SEO & Accessibility Meta Tags -->
   <meta name="description" content="Moddu Prem Kumar - UI Developer Portfolio with 3 years of experience in React.js, JavaScript, and web development.">
   <meta name="keywords" content="Moddu Prem Kumar, UI Developer, Portfolio, HTML, CSS, JavaScript, React, Frontend Developer">
   <meta name="author" content="Moddu Prem Kumar">
 
   <style>
+    :root {
+      --bg-light: linear-gradient(120deg, lightblue, lightgreen);
+      --text-light: #333;
+      --header-light: rgba(44, 62, 80, 0.95);
+      --nav-light: rgba(52, 73, 94, 0.95);
+
+      --bg-dark: #121212;
+      --text-dark: #eee;
+      --header-dark: #1f1f1f;
+      --nav-dark: #2a2a2a;
+    }
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       line-height: 1.6;
-      background: linear-gradient(120deg, lightblue, lightgreen);
-      color: #333;
+      background: var(--bg-light);
+      color: var(--text-light);
+      transition: 0.3s ease;
+    }
+
+    body.dark-mode {
+      background: var(--bg-dark);
+      color: var(--text-dark);
     }
 
     header {
-      background: rgba(44, 62, 80, 0.95);
+      background: var(--header-light);
       color: #fff;
       padding: 2rem 1rem;
       text-align: center;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    body.dark-mode header {
+      background: var(--header-dark);
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #fff;
+      color: #333;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: #ccc;
     }
 
     nav {
-      background: rgba(52, 73, 94, 0.95);
+      background: var(--nav-light);
       text-align: center;
       padding: 0.7rem 0;
+    }
+
+    body.dark-mode nav {
+      background: var(--nav-dark);
     }
 
     nav a {
@@ -79,6 +123,12 @@
       margin: 1rem 0;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .project, 
+    body.dark-mode .experience-item, 
+    body.dark-mode form {
+      background: #1e1e1e;
     }
 
     .experience-item {
@@ -144,10 +194,11 @@
 <body>
   <header>
     <h1>Hi, I'm Moddu Prem Kumar</h1>
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
     <div class="social-icons">
-      <a href="https://www.linkedin.com/in/prem-kumar-moddu-5021bb213" target="_blank" rel="noopener noreferrer" class="linkedin" aria-label="LinkedIn Profile">🔗 LinkedIn</a>
-      <a href="https://www.naukri.com/mnjuser/profile?id=&altresid" target="_blank" rel="noopener noreferrer" class="naukri" aria-label="Naukri Profile">📄 Naukri</a>
-      <a href="mailto:bhanuprem1432@gmail.com" class="email" aria-label="Send Email to Moddu Prem Kumar">✉️ Email</a>
+      <a href="https://www.linkedin.com/in/prem-kumar-moddu-5021bb213" target="_blank" class="linkedin">🔗 LinkedIn</a>
+      <a href="https://www.naukri.com/mnjuser/profile?id=&altresid" target="_blank" class="naukri">📄 Naukri</a>
+      <a href="mailto:bhanuprem1432@gmail.com" class="email">✉️ Email</a>
     </div>
   </header>
 
@@ -162,13 +213,7 @@
   <section id="about">
     <h2>About Me</h2>
     <p>
-      UI Developer with 3 years of experience in building scalable, responsive, and 
-      accessible web applications using HTML5, CSS3, JavaScript, and React.js. Proficient
-      in developing reusable components and maintaining clean code using industry-standard 
-      tools like Visual Studio Code and Git. Experienced in working with Agile teams, delivering 
-      high-quality UIs aligned with design systems and business goals. Strong focus on performance,
-      cross-browser compatibility, and modern front-end best practices. Adaptable, detail-oriented,
-      and committed to continuous learning.
+      UI Developer with 3 years of experience in building scalable, responsive, and accessible web applications using HTML5, CSS3, JavaScript, and React.js...
     </p>
   </section>
 
@@ -201,7 +246,6 @@
     <div class="project">
       <h3>E-Commerce Platform</h3>
       <p><strong>Role:</strong> UI Developer</p>
-      <p><strong>Key Responsibilities:</strong></p>
       <ul>
         <li><strong>UI Development:</strong> Designed and implemented responsive web interfaces using HTML, CSS, JavaScript, and React.js.</li>
         <li><strong>Cross-Browser Compatibility:</strong> Ensured cross-browser compatibility and optimized layouts for mobile-first design.</li>
@@ -209,19 +253,12 @@
         <li><strong>Testing & Debugging:</strong> Performed debugging and unit testing to ensure stability across modules.</li>
         <li><strong>Optimization:</strong> Conducted performance optimization for faster page loads and improved SEO.</li>
       </ul>
-      <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, React.js</p>
     </div>
 
     <div class="project">
       <h3>Invoice Management System (IMS)</h3>
       <p><strong>Role:</strong> UI Developer</p>
-      <p><strong>Description:</strong></p>
-      <p>
-        Invoice Management System is a product that records Purchase Invoices, generates Sales Invoices,
-        tracks Invoice payments, and assists in GST filing. It also manages vendors, customers, and invoice items
-        for a particular Tax Paying Entity.
-      </p>
-      <p><strong>Key Responsibilities:</strong></p>
+      <p><strong>Description:</strong> Invoice Management System tracks invoice payments, helps with GST filing, and manages vendors and customers.</p>
       <ul>
         <li>Worked as an individual contributor and supported team members.</li>
         <li>Engaged with other teams to gather inputs for testing the application.</li>
@@ -230,15 +267,12 @@
         <li>Tested the application in environments such as DEV and SIT.</li>
         <li>Participated in user refinement sessions and contributed insights.</li>
       </ul>
-      <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, Redux, React.js</p>
     </div>
   </section>
 
   <section id="contact">
     <h2 style="text-align: center; color: white;">Contact Me</h2>
-    <form action="https://formsubmit.co/bhanuprem1432@gmail.com" method="POST" style="max-width: 600px; margin: 0 auto; background: rgba(255, 255, 255, 0.95); padding: 2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
-      <input type="hidden" name="_subject" value="New Portfolio Message!">
-      <input type="hidden" name="_captcha" value="false">
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="max-width: 600px; margin: 0 auto; background: rgba(255, 255, 255, 0.95); padding: 2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" placeholder="Your Message" required></textarea>
@@ -246,12 +280,18 @@
     </form>
 
     <div style="text-align: center;">
-      <a href="https://drive.google.com/file/d/1ZQtkg-zL5Faj1LBCrX3_nAFuUs08Yx8f/view?usp=sharing" class="resume-button" target="_blank" rel="noopener noreferrer">⬇️ Download My Resume</a>
+      <a href="https://drive.google.com/file/d/1ZQtkg-zL5Faj1LBCrX3_nAFuUs08Yx8f/view?usp=sharing" class="resume-button" target="_blank">⬇️ Download My Resume</a>
     </div>
   </section>
 
   <footer>
     <p>© 2025 Moddu Prem Kumar. All rights reserved.</p>
   </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
 </body>
 </html>
